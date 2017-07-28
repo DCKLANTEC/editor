@@ -1,0 +1,142 @@
+<html>
+<head>
+	<title>Editor - Pincel Key</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Hammersmith+One|Roboto:300,400,500,700,900');
+
+		*{
+			margin: 0;
+			padding: 0;
+
+			box-sizing: border-box;
+		}
+
+		body{
+			background: #35037F;
+		}
+
+		/*******EDITOR******************/
+		#con-editor{
+			width: 60%;
+			position: relative;
+			left: 20%;
+			margin-top: 50px;
+		}
+
+		#editor{
+			display: flex;
+			flex-direction: column;
+
+			background: #eee;
+			padding: 5px;
+			border-radius: 10px;
+			box-shadow: rgba(31, 3, 70, 1) 0px 0px 20px;
+		}
+
+		/*CAJA DE TEXTO*/
+		#cajaTexto{
+			background: #fff;
+			width: 100%;
+			height: 50vh;
+			outline: none;
+			border: solid 1px #ccc;
+			border-radius: 5px 5px 0px 0px;
+			padding: 10px;
+			margin-bottom: 10px;
+
+			font-family: 'Roboto';
+		}
+
+		/*MENU*/
+		#menu{
+			background: #ddd;
+			width: 100%;
+			border: solid 1px #ccc;
+			border-radius: 5px;
+			padding: 5px;
+		}
+
+		.comando{
+			padding: 5px 10px;
+			background: white;
+			border: solid 1px #ccc;
+
+			outline: none;
+			cursor: pointer;
+		}
+
+		.comando:active{
+			border: solid 1px #555;
+			background: #eee;
+		}
+
+		#btnUnderline > span{
+			text-decoration: underline;
+		}
+
+		#btnColor > span{
+			color: #35037F;
+		}
+
+		#btnBackColor > span{
+			background: gold;
+			padding: 3.5px 5px;
+		}
+
+		
+	</style>
+</head>
+<body>
+	<div id="con-editor">
+		<div id="editor">
+			<div id="cajaTexto" contenteditable>
+				CSS
+				(Cascading Style Sheets, u Hojas de Estilo en Cascada) es la tecnología
+				desarrollada por el World Wide Web Consortium (W3C) con el fin de separar la estructura de la presentación. A pesar de que la recomendación
+				oficial del grupo de trabajo de la W3C ya había alcanzado la estabilidad requerida para que fuera soportada por los principales navegadores comerciales, como Netscape e Internet Explorer, tan
+				tempranamente como en el año 1998, la situación de entonces, comúnmente conocida
+				como la “guerra de los navegadores”, hacía que los intereses comerciales de
+				las dos compañías en lucha por el mercado de usuarios de Internet se interpusieran
+				en el camino de las CSS.
+			</div>
+			<div id="menu">
+				<button data-type="bold" class="comando" id="btnBold"><b>B</b></button>
+				<button data-type="italic" class="comando" id="btnItalic"><i>i</i></button>
+				<button data-type="underline" class="comando" id="btnUnderline"><span>S</span></button>
+				<button data-type="foreColor" class="comando" id="btnColor"><span>A</span></button>
+				<button data-type="backColor" class="comando" id="btnBackColor"><span>A</span></button>
+			</div>	
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+		//Opciones
+		var btnBold = document.getElementById('btnBold'),
+			btnItalic = document.getElementById('btnItalic'),
+			btnUnderline = document.getElementById('btnUnderline'),
+			btnColor = document.getElementById('btnColor'),
+			btnBackColor = document.getElementById('btnBackColor');
+
+		btnBold.onclick = function(event){
+			document.execCommand(btnBold.getAttribute("data-type"),false,null);
+		}
+
+		btnItalic.onclick = function(event){
+			document.execCommand(btnItalic.getAttribute("data-type"),false,null);
+		}	
+
+		btnUnderline.onclick = function(event){
+			document.execCommand(btnUnderline.getAttribute("data-type"),false,null);
+		}	
+
+		btnColor.onclick = function(event){
+			document.execCommand(btnColor.getAttribute("data-type"),false,"#35037F");
+		}	
+
+		btnBackColor.onclick = function(event){
+			document.execCommand(btnBackColor.getAttribute("data-type"),false,"gold");
+		}	
+	</script>
+</body>
+</html>
